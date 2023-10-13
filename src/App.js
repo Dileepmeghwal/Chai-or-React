@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import MyComponent from "./MyComponent";
+import { useState } from "react";
+import { MyContext } from "./MyContext";
+import Calculator from "./Calculator";
+import Product from "./Product";
+import Shop from "./ShopingApp";
+import ShopingApp from "./ShopingApp";
+import StoreApp from "./StoreApp";
 
 function App() {
+  const [text, setText] = useState("");
+  const user = {
+    name: "admin",
+    isLoggedIn: false,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <MyContext.Provider value={{ text, setText, user }}>
+        {/* <MyComponent data={user}/> */}
+        {/* <Calculator/> */}
+        {/* <Product/> */}
+      </MyContext.Provider>
+      {/* <ShopingApp /> */}
+      <StoreApp />
+    </>
   );
 }
 
