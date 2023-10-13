@@ -13,9 +13,10 @@ const StoreApp = () => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(Products);
-  const filterData = Products.filter((product) =>
-    product.name.toLowerCase().includes(filterText.toLowerCase())
-  );
+
+  //   const filterData = Products.filter((product) =>
+  //     product.name.toLowerCase().includes(filterText.toLowerCase())
+  //   );
 
   const handleSearch = (e) => {
     const searchText = e.target.value.toLowerCase();
@@ -25,6 +26,16 @@ const StoreApp = () => {
     );
     setFilterText(searchText);
     setFilteredProducts(filtered);
+  };
+
+  const handleStockOnly = (e) => {
+    const stockOnly = Products.filter((item) => item.stocked && item.stocked);
+    setInStockOnly(e.target.checked);
+    if (e.target.checked) {
+      setFilteredProducts(stockOnly);
+    } else {
+      setFilteredProducts(Products);
+    }
   };
 
   return (
@@ -41,6 +52,7 @@ const StoreApp = () => {
           <input
             type="checkbox"
             checked={inStockOnly}
+            onChange={handleStockOnly}
             // onChange={() => setShowStocked(!showStocked)}
           />{" "}
           Only show products in stock
@@ -50,13 +62,17 @@ const StoreApp = () => {
       <div className="header" style={{ display: "flex" }}>
         <div style={{ width: "600px" }}>
           <h3>Name</h3>
-          <ul>
+          {/* <ul>
             {filteredProducts.length === 0 ? (
               <p>No matching items found.</p>
             ) : (
-              filteredProducts.map((item) => <li>{item.name}</li>)
+              filteredProducts.map((item) => (
+                <li style={{ color: item.stocked ? "" : "red" }}>
+                  {item.name}
+                </li>
+              ))
             )}
-          </ul>
+          </ul> */}
         </div>
         <div style={{ width: "150px" }}>
           <h3>Price</h3>
@@ -65,7 +81,20 @@ const StoreApp = () => {
 
       <div>
         <h4>Fruits</h4>
+        {filteredProducts
+          .filter((item) => item.category === "Fruits")
+          .map((item) => (
+            <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
+          ))}
+
         <h4>Vegetables</h4>
+        {filteredProducts
+          .filter((item) => item.category === "Vegetables")
+          .map((item) => (
+            <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
+          ))}
+
+        {filteredProducts.length === 0 && <p>No matching items found.</p>}
       </div>
     </div>
   );
