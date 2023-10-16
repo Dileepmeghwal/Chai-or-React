@@ -8,6 +8,12 @@ import Product from "./Product";
 import Shop from "./ShopingApp";
 import ShopingApp from "./ShopingApp";
 import StoreApp from "./StoreApp";
+import Teacher from "./Teacher";
+import Form from "./Form";
+import Todo from "./Todo";
+import TodoList from "./TodoList";
+import TodoApp from "./TodoApp/TodoApp";
+import Parent from "./useCallback/Parent";
 
 function App() {
   const [text, setText] = useState("");
@@ -24,7 +30,13 @@ function App() {
         {/* <Product/> */}
       </MyContext.Provider>
       {/* <ShopingApp /> */}
-      <StoreApp />
+      {/* <StoreApp /> */}
+      <Teacher/>
+      <Form/>
+      {/* <Todo/> */}
+      {/* <TodoList/> */}
+      <TodoApp/>
+      <Parent/>
     </>
   );
 }

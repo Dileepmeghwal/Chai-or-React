@@ -1,0 +1,7 @@
+{
+  "name": "context-api",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "custom"
+}
