@@ -14,16 +14,24 @@ import Todo from "./Todo";
 import TodoList from "./TodoList";
 import TodoApp from "./TodoApp/TodoApp";
 import Parent from "./useCallback/Parent";
+import Sidebar from "./sidebar";
+import { DarkModeProvider, useDarkMode } from "./Context/DarkModeContext";
+import Card from "./Card/Card";
+import Counter from "./useCallback/Counter";
+import CounterApp from "./useCallback/CounterApp";
+import ApiProduct from "./Card/ApiProduct";
 
 function App() {
   const [text, setText] = useState("");
+
   const user = {
     name: "admin",
     isLoggedIn: false,
   };
 
   return (
-    <>
+    <div>
+      <button>Mode</button>
       <MyContext.Provider value={{ text, setText, user }}>
         {/* <MyComponent data={user}/> */}
         {/* <Calculator/> */}
@@ -31,13 +39,24 @@ function App() {
       </MyContext.Provider>
       {/* <ShopingApp /> */}
       {/* <StoreApp /> */}
-      <Teacher/>
-      <Form/>
+      {/* <Teacher/> */}
+      {/* <Form/> */}
       {/* <Todo/> */}
       {/* <TodoList/> */}
-      <TodoApp/>
-      <Parent/>
-    </>
+      {/* <TodoApp/> */}
+      {/* <Parent/> */}
+
+      <DarkModeProvider>
+        <Sidebar />
+      </DarkModeProvider>
+      <DarkModeProvider>
+        <Card />
+      </DarkModeProvider>
+
+      {/* <Counter/> */}
+      <CounterApp/>
+      <ApiProduct/>
+    </div>
   );
 }
 

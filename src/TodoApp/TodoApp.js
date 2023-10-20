@@ -6,12 +6,7 @@ let numbers = [1, 2, 3];
 let sum = numbers.reduce(function (previousValue, currentValue) {
   return previousValue + currentValue;
 });
-let sumNum = numbers.reduce((prev, nextVal) =>{
-    return  prev + nextVal
-});
 
-
-console.log(sumNum(10,30));
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState(initialTasks);

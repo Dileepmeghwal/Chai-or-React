@@ -32,7 +32,48 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.custom-input {
+  border: 1px solid #000;
+
+  width: 200px;
+  height: 40px;
+  /* Add other styles as desired */
+}
+
+.custom-input:focus {
+  border: 2px solid blue !important;
+  /* Example focus border style */
+  /* Add other focus styles as desired */
+}
+
+
+.app {
+  display: flex;
+  transition: margin-left 0.3s;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar-open {
+  margin-left: 250px; /* Width of the sidebar */
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.visible{
+ background-color: red;
 }
