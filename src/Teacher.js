@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useCounter } from "./Context/CounterContext";
 
 const people = [
   {
@@ -28,7 +29,7 @@ const people = [
 
 const Teacher = () => {
   const [tecaher, setTeacher] = useState(people);
-
+  const { counter, inc, dec } = useCounter();
   useEffect(() => {
     const filterData = people.filter((item) => {
       return item.profession === "chemist";
@@ -53,8 +54,7 @@ const Teacher = () => {
   }
   console.log(people);
   const list = chemist.map((item) => item);
-//   console.log('list',list);
-
+  //   console.log('list',list);
 
   return (
     <div>
@@ -64,8 +64,9 @@ const Teacher = () => {
         </ul>
       ))}
       <ul>
-          <li>{list}</li>
-        </ul>
+        <li>{list}</li>
+      </ul>
+      
     </div>
   );
 };

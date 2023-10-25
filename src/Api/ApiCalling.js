@@ -24,10 +24,19 @@ export const post = async (url, data) => {
 };
 
 export const remove = async (url, data) => {
-    try {
-      const response = await axiosInstance.delete(url, data);
-      return response.data;
-    } catch (error) {
-      throw error;
-    }
-  };
+  try {
+    const response = await axiosInstance.delete(url, data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const editData = async (url, data) => {
+  try {
+    const response = await axiosInstance.put(url, data);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

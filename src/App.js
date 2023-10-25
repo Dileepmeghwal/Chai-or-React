@@ -20,6 +20,13 @@ import Card from "./Card/Card";
 import Counter from "./useCallback/Counter";
 import CounterApp from "./useCallback/CounterApp";
 import ApiProduct from "./Card/ApiProduct";
+import DateTime from "./Date/DateTime";
+import CrudApp from "./Crud/CrudApp";
+import UserList from "./Blog/UserList";
+import DummyDataPagination from "./Pagination/DummyDataPagination";
+import String from "./Blog/String";
+import ComplexCalculation from "./useCallback/ComplexCalculation";
+import { CounterProvider } from "./Context/CounterContext";
 
 function App() {
   const [text, setText] = useState("");
@@ -31,7 +38,6 @@ function App() {
 
   return (
     <div>
-      <button>Mode</button>
       <MyContext.Provider value={{ text, setText, user }}>
         {/* <MyComponent data={user}/> */}
         {/* <Calculator/> */}
@@ -39,23 +45,32 @@ function App() {
       </MyContext.Provider>
       {/* <ShopingApp /> */}
       {/* <StoreApp /> */}
-      {/* <Teacher/> */}
+      {/* <CounterProvider>
+        <Teacher />
+        <String initialValue={100} />
+        <ComplexCalculation />
+      </CounterProvider> */}
       {/* <Form/> */}
       {/* <Todo/> */}
       {/* <TodoList/> */}
       {/* <TodoApp/> */}
       {/* <Parent/> */}
 
-      <DarkModeProvider>
+      {/* <DarkModeProvider>
         <Sidebar />
-      </DarkModeProvider>
-      <DarkModeProvider>
+      </DarkModeProvider> */}
+      {/* <DarkModeProvider>
         <Card />
-      </DarkModeProvider>
+      </DarkModeProvider> */}
 
       {/* <Counter/> */}
-      <CounterApp/>
-      <ApiProduct/>
+      {/* <CounterApp/> */}
+      {/* <ApiProduct/> */}
+
+      {/* <DateTime/> */}
+      {/* <CrudApp/> */}
+      <UserList />
+      {/* <DummyDataPagination /> */}
     </div>
   );
 }

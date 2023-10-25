@@ -1,0 +1,38 @@
+{
+  "posts": [
+    {
+      "title": "Ramesh reading a book",
+      "author": null,
+      "id": 4
+    },
+    {
+      "title": "Hello guys! good evenings",
+      "author": null,
+      "id": 6
+    },
+    {
+      "title": "Ronaldo Chritianos",
+      "author": null,
+      "id": 7
+    },
+    {
+      "title": "I learned useCallback",
+      "author": null,
+      "id": 9
+    },
+    {
+      "title": "I learned cutomhook",
+      "author": null,
+      "id": 10
+    },
+    {
+      "title": "It time to leave the office!",
+      "author": null,
+      "id": 11
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

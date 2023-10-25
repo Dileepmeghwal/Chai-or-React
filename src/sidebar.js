@@ -31,6 +31,7 @@ const Sidebar = () => {
   // toggle
 
   const [isFocused, setIsFocused] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -67,11 +68,91 @@ const Sidebar = () => {
 
   // console.log(count);
 
-  let str = "javaScript";
-  let index = str.lastIndexOf("a");
-  let arr = str.indexOf("j");
-  console.log(index, arr);
+  // let str = "javaScript";
+  // let index = str.lastIndexOf("a");
+  // let arr = str.indexOf("j");
+  // console.log(index, arr);
 
+  let rivers = ["Nile", "ganges", "yanges"];
+  let moreRiver = ["danube", "Amazon"];
+
+  [].push.apply(rivers, moreRiver);
+  // console.log(rivers);
+
+  // const onCheckHandler = (e) => {
+  //   if (isChecked) {
+  //     console.log("Good Morning");
+  //   } else {
+  //     console.log("Good Night");
+  //   }
+  //   setIsChecked(e.target.checked);
+  // };
+
+  let numbers = [2, 4, 5];
+  // let result = numbers.every((e) => e >= 2);
+  // console.log("res", result);
+
+  //some in js
+  let marks = [4, 5, 7, 9, 10, 3];
+
+  // let lessthanFive = false;
+
+  // for (let index = 0; index < marks.length; i++) {
+  //   if (marks[index] < 5) {
+  //     lessthanFive = true;
+  //     break;
+  //   }
+  // }
+  // console.log(lessthanFive);s
+
+  let num = [0, 1, 2, 3, 10, 20, 30];
+  num.sort((a, b) => {
+    if (a > b) return 1;
+    if (a < b) return -1;
+    return 0;
+  });
+  // console.log("sort", num);
+
+  // let animals = ["cat", "dog", "elephant", "bee", "ant"];
+  // animals.sort();
+  // console.log("string sort", animals);
+
+  let employees = [
+    { name: "John", salary: 90000, hireDate: "July 1, 2010" },
+    { name: "David", salary: 75000, hireDate: "August 15, 2009" },
+    { name: "Ana", salary: 80000, hireDate: "December 12, 2011" },
+  ];
+  employees.sort((x, y) => {
+    return x.salary - y.salary;
+  });
+  // console.log("employees", employees);
+
+  // let logged = true;
+  // if (logged) {
+  //   console.log("logged IN");
+  // }
+  // let age = 16;
+  // if (age >= 18) {
+  //   console.log("you can sign up!");
+  // } else {
+  //   console.log("you must be at least 18 to sign up!");
+  // }
+  // const add = (x, y) => x + y;
+  // try {
+  //   let result = add(10, 20);
+  //   console.log(result);
+  // } catch (e) {
+  //   console.log({ name: e.name, message: e.message });
+  // }
+  // console.log("Bye");
+  // let result = 0;
+  // try {
+  //   result = add(10, 20);
+  // } catch (e) {
+  //   console.log(e.message);
+  // } finally {
+  //   console.log([result].find(i => i));
+  // }
   return (
     <div
       className={`app ${isSidebarOpen ? "sidebar-open" : ""}`}
@@ -82,6 +163,11 @@ const Sidebar = () => {
         <button onClick={toggleSidebar}>Toggle Sidebar</button>
       </div>
       <button onClick={toggleDarkMode}>{isDarkMode ? "on" : "off"}</button>
+      <input
+        placeholder=""
+        type="checkbox"
+        //onChange={onCheckHandler}
+      />
       <div className="content">
         <div className="App">
           <ul id="main-menu">
@@ -95,7 +181,6 @@ const Sidebar = () => {
               </ul>
             </li>
             <li>Blog</li>
-
           </ul>
           <ul id="">
             <li>Item 1</li>
