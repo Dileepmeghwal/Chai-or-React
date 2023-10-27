@@ -1,4 +1,15 @@
 import React, { useState } from "react";
+import { ThemeProvider, useTheme } from "./Context/ThemeContext";
+
+export const MyComponents = () => {
+  return (
+    <ThemeProvider>
+      <div>
+        <StoreApp />
+      </div>
+    </ThemeProvider>
+  );
+};
 
 const Products = [
   { category: "Fruits", price: "$1", stocked: true, name: "Apple" },
@@ -13,10 +24,7 @@ const StoreApp = () => {
   const [filterText, setFilterText] = useState("");
   const [inStockOnly, setInStockOnly] = useState(false);
   const [filteredProducts, setFilteredProducts] = useState(Products);
-
-  //   const filterData = Products.filter((product) =>
-  //     product.name.toLowerCase().includes(filterText.toLowerCase())
-  //   );
+  const { toggle, theme } = useTheme();
 
   const handleSearch = (e) => {
     const searchText = e.target.value.toLowerCase();
@@ -39,64 +47,56 @@ const StoreApp = () => {
   };
 
   return (
-    <div>
-      <form>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={filterText}
-          onChange={handleSearch}
-        />
-        <br />
-        <label>
+    <>
+      <button onClick={toggle}>Toggle Theme</button>
+
+      <div className={theme === "light" ? "dark" : "light"}>
+        <form>
           <input
-            type="checkbox"
-            checked={inStockOnly}
-            onChange={handleStockOnly}
-            // onChange={() => setShowStocked(!showStocked)}
-          />{" "}
-          Only show products in stock
-        </label>
-      </form>
+            type="text"
+            placeholder="Search..."
+            value={filterText}
+            onChange={handleSearch}
+          />
+          <br />
+          <label>
+            <input
+              type="checkbox"
+              checked={inStockOnly}
+              onChange={handleStockOnly}
+            />{" "}
+            Only show products in stock
+          </label>
+        </form>
 
-      <div className="header" style={{ display: "flex" }}>
-        <div style={{ width: "600px" }}>
-          <h3>Name</h3>
-          {/* <ul>
-            {filteredProducts.length === 0 ? (
-              <p>No matching items found.</p>
-            ) : (
-              filteredProducts.map((item) => (
-                <li style={{ color: item.stocked ? "" : "red" }}>
-                  {item.name}
-                </li>
-              ))
-            )}
-          </ul> */}
+        <div className="header" style={{ display: "flex" }}>
+          <div style={{ width: "600px" }}>
+            <h3>Name</h3>
+          </div>
+          <div style={{ width: "150px" }}>
+            <h3>Price</h3>
+          </div>
         </div>
-        <div style={{ width: "150px" }}>
-          <h3>Price</h3>
+
+        <div>
+          <h4>Fruits</h4>
+          {filteredProducts
+            .filter((item) => item.category === "Fruits")
+            .map((item) => (
+              <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
+            ))}
+
+          <h4>Vegetables</h4>
+          {filteredProducts
+            .filter((item) => item.category === "Vegetables")
+            .map((item) => (
+              <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
+            ))}
+
+          {filteredProducts.length === 0 && <p>No matching items found.</p>}
         </div>
       </div>
-
-      <div>
-        <h4>Fruits</h4>
-        {filteredProducts
-          .filter((item) => item.category === "Fruits")
-          .map((item) => (
-            <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
-          ))}
-
-        <h4>Vegetables</h4>
-        {filteredProducts
-          .filter((item) => item.category === "Vegetables")
-          .map((item) => (
-            <li style={{ color: item.stocked ? "" : "red" }}>{item.name}</li>
-          ))}
-
-        {filteredProducts.length === 0 && <p>No matching items found.</p>}
-      </div>
-    </div>
+    </>
   );
 };
 

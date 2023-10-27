@@ -7,7 +7,7 @@ import Calculator from "./Calculator";
 import Product from "./Product";
 import Shop from "./ShopingApp";
 import ShopingApp from "./ShopingApp";
-import StoreApp from "./StoreApp";
+import StoreApp, { MyComponents } from "./StoreApp";
 import Teacher from "./Teacher";
 import Form from "./Form";
 import Todo from "./Todo";
@@ -18,6 +18,7 @@ import Sidebar from "./sidebar";
 import { DarkModeProvider, useDarkMode } from "./Context/DarkModeContext";
 import Card from "./Card/Card";
 import Counter from "./useCallback/Counter";
+
 import CounterApp from "./useCallback/CounterApp";
 import ApiProduct from "./Card/ApiProduct";
 import DateTime from "./Date/DateTime";
@@ -27,6 +28,13 @@ import DummyDataPagination from "./Pagination/DummyDataPagination";
 import String from "./Blog/String";
 import ComplexCalculation from "./useCallback/ComplexCalculation";
 import { CounterProvider } from "./Context/CounterContext";
+import { Routes, Route } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup";
+import Forgot from "./Forgot";
+import { ThemeProvider } from "./Context/ThemeContext";
+import CounterProject from "./useCallback/one/CounterProject";
+import Library from "./Library/Library";
 
 function App() {
   const [text, setText] = useState("");
@@ -47,7 +55,7 @@ function App() {
       {/* <StoreApp /> */}
       {/* <CounterProvider>
         <Teacher />
-        <String initialValue={100} />
+        
         <ComplexCalculation />
       </CounterProvider> */}
       {/* <Form/> */}
@@ -69,8 +77,29 @@ function App() {
 
       {/* <DateTime/> */}
       {/* <CrudApp/> */}
-      <UserList />
+      {/* <UserList /> */}
       {/* <DummyDataPagination /> */}
+      {/* <String initialValue={100} /> */}
+
+      <Routes>
+        <Route path="/" Component={Login} />
+        <Route path="/signup" Component={Signup} />
+        <Route path="/forgot" Component={Forgot} />
+        <Route path="/user-list" Component={UserList} />
+        <Route path="/todoApp" Component={TodoList} />
+        <Route path="/counter" Component={Counter} />
+        <Route path="/api" Component={ApiProduct} />
+        <Route path="/shop" Component={Shop} />
+        <Route path="/shopping" Component={ShopingApp} />
+        <Route path="/crud" Component={CrudApp} />
+        <Route path="/todo-one" Component={Todo} />
+        <Route path="/todo-app" Component={TodoApp} />
+        <Route path="/pagination" Component={DummyDataPagination} />
+
+        <Route path="/store" Component={MyComponents} />
+        <Route path="/useCallback" Component={CounterProject} />
+        <Route path="/library" Component={Library} />
+      </Routes>
     </div>
   );
 }

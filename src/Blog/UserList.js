@@ -67,7 +67,7 @@ const UserList = () => {
   };
   return (
     <div>
-      <h6>UserList</h6>
+      <h2>UserList</h2>
       <input
         type="text"
         placeholder="Enter Name"

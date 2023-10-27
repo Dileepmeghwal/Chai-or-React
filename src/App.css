@@ -1,3 +1,5 @@
+
+
 .App {
   text-align: center;
 }
@@ -66,7 +68,8 @@
 }
 
 .sidebar-open {
-  margin-left: 250px; /* Width of the sidebar */
+  margin-left: 250px;
+  /* Width of the sidebar */
 }
 
 .content {
@@ -74,6 +77,16 @@
   padding: 20px;
 }
 
-.visible{
- background-color: red;
+.visible {
+  background-color: red;
+}
+
+.light {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark {
+  background-color: #000;
+  color: #fff;
 }

@@ -29,9 +29,56 @@
       "title": "It time to leave the office!",
       "author": null,
       "id": 11
+    },
+    {
+      "title": "I learned login and signup functionality",
+      "author": null,
+      "id": 12
     }
   ],
-  "comments": [],
+  "users": [
+    {
+      "email": "yogesh.delogico@gmail.com",
+      "password": "$2b$10$P9yv0AcBSsWLmjHCqdla/ekAbxJTABpX8B7rgjTDhw3gkRTCpC5I."
+    },
+    {
+      "email": "munish.delogico@gmail.com",
+      "password": "$2b$10$x9BjHnZ0nLmRJsQRnXypsOxhmNCl/cj8XX2MyNtKgHzKBSs7nzY42"
+    },
+    {
+      "email": "kriti.delogico@gmail.com",
+      "password": "$2b$10$8exPhhdgpNmFIrhhxg54SetaknhANtE/6QecWXUketA3KXuY/kRWm"
+    },
+    {
+      "email": "mankrit@gmail.com",
+      "password": "$2b$10$kl4BRNqAnSfFcR1upajMfO6zr7R94vYkFJ1PZSHEko0MJpKUbxkgG"
+    },
+    {
+      "email": "vijay.delogico@gmail.com",
+      "password": "$2b$10$oyh2x0d00aTR.uwBqqo9Merznr7MFtdYEJh1X7QQYxrTpMOKI.cSm"
+    },
+    {
+      "email": "kriti@gmail.com",
+      "password": "$2b$10$1IrH8ME7QOW9w8QP.OORJO6P5e1TONxI4x7cc5zZZi6qBfZH4M.MK"
+    },
+    {
+      "email": "ramesh@gmail.com",
+      "password": "$2b$10$NHzLNs4FHtg1Ol6EgOOM1e3a1SWKkIl0NWap.50odIH0lCuWyQsSu"
+    },
+    {
+      "email": "kamlesh@gmail.com",
+      "password": "$2b$10$u5Y7gsDg/.Y3uQYREokvEerzs5q47CjMg0ogRwurvtVVOByDHkbFm"
+    },
+    {
+      "email": "mansi.delogico@gmail.comramesh@gmail.com",
+      "password": "$2b$10$I51L3aO4JuXDivptF/eFBOy6rQxoyHSpXDwexd2N4AlL95.o.QlLK"
+    },
+    {
+      "email": "mansi.delogico@gmail.com",
+      "password": "$2b$10$nzAtmHCQluHGSNPG6KKA1.kAqCmscWWDEc.oLSxlkX8tgX1Tg32qq"
+    }
+  ],
+  "login": [],
   "profile": {
     "name": "typicode"
   }
