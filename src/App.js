@@ -35,6 +35,11 @@ import Forgot from "./Forgot";
 import { ThemeProvider } from "./Context/ThemeContext";
 import CounterProject from "./useCallback/one/CounterProject";
 import Library from "./Library/Library";
+import LeftSidebar from "./Library/LeftSidebar";
+import Searchbar from "./Library/Searchbar";
+import Emailsend from "./AWS/Emailsend";
+import Blog from "./strapi/Blog";
+import BlogDetails from "./strapi/BlogDetails";
 
 function App() {
   const [text, setText] = useState("");
@@ -99,6 +104,11 @@ function App() {
         <Route path="/store" Component={MyComponents} />
         <Route path="/useCallback" Component={CounterProject} />
         <Route path="/library" Component={Library} />
+        <Route path="/leftSidebar" Component={LeftSidebar} />
+        <Route path="/searchApi" Component={Searchbar} />
+        <Route path="/emailsend" Component={Emailsend} />
+        <Route path="/blog" Component={Blog} />
+        <Route path="/blog/:postId" Component={BlogDetails} />
       </Routes>
     </div>
   );
