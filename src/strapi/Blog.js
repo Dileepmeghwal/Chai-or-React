@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { BASE_URL, get, post } from "../Api/ApiCalling";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -10,50 +10,48 @@ const Blog = () => {
   const [isLoading, setLoading] = useState(false);
   const navigation = useNavigate();
   const [search, setSearch] = useState("");
-  const filterValue = [...restaurant];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [error, setError] = useState("");
+
+  const postPerPage = 5;
+  const [articles, setArticles] = useState([]);
+
+  const [totalPages, setTotalPages] = useState(1);
+
+  const [restaurantList, setRestaurentList] = useState();
 
   useEffect(() => {
     getData();
+    // postDetails();
   }, []);
-
-  // console.log("restaurent", filterValue);
-  // const filtered = Products.filter(
-  //   (product) => product.name.toLowerCase().indexOf(searchText) !== -1
-  // );
 
   const handleSinglePost = (id) => {
     navigation(`/blog/${id}`);
   };
 
-  // if (selectedGenre === "") {
-  //   setFilterBook("");
-  //   setBooklist(books);
-  // } else {
-  //   setFilterBook(selectedGenre);
-  //   const filteredBooks = books.filter(
-  //     (book) => book.genre === selectedGenre
-  //   );
-  //   setBooklist(filteredBooks);
-  // }
+  const handleSerach = useCallback(
+    (e) => {
+      const searchText = e.target.value;
+      setSearch(searchText);
 
-  const handleSerach = (e) => {
-    const searchText = e.target.value;
-    setSearch(searchText);
-
-    if (searchText === "") {
-      setRestaurent(filterValue);
-    } else {
-      const text = filterValue.filter(
-        (item) => item.name.toLowerCase().indexOf(searchText) !== -1
-      );
-      setRestaurent(text);
-    }
-  };
+      if (searchText === "") {
+        setRestaurent(restaurantList);
+      } else {
+        const text = restaurantList.filter(
+          (item) => item.name.toLowerCase().indexOf(searchText) !== -1
+        );
+        setRestaurent(text);
+      }
+    },
+    [restaurantList]
+  );
 
   const getData = () => {
     setLoading(true);
-    get("/restaurants?populate=*")
+    // get("/restaurants?populate=*")
+    get(`http://localhost:1337/api/restaurants?populate=*`)
       .then((res) => {
+        console.log("paging", res);
         const response = res.data;
         const list = response.map((item) => {
           let createdDate = new Date(
@@ -71,19 +69,23 @@ const Blog = () => {
             categories: item.attributes.categories.data,
           };
         });
+
         console.log("list", list);
         setRestaurent(list);
+        setRestaurentList(list);
         console.log("response", response);
         setLoading(false);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
+        setError(error.message);
+        setLoading(false);
       });
   };
 
   const sendData = () => {
     axios
-      .post(`http://localhost:1337/api/restaurants?fields[0]="name"`, {
+      .post(`http://localhost:1337/api/restaurants`, {
         data: {
           name: "Dolemon Sushi",
         },
@@ -92,55 +94,77 @@ const Blog = () => {
         console.log("***", response);
       });
   };
+
+  // const postDetails = () => {
+  //   get("http://localhost:1337/api/posts?populate=*")
+  //     .then((res) => console.log("post", res))
+  //     .catch((error) => console.error(error));
+  // };
   return (
-    <div className="container" style={style.container}>
+    <div className="container mx-auto px-4" style={style.container}>
+      <p>{process.env.API_KEY}</p>
       <input
-        type="text"
         placeholder="search..."
         value={search}
         onChange={handleSerach}
+        type="text"
+        className="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+      invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500"
       />
       <div>
         {isLoading ? <p>Loading...</p> : ""}
-        <button onClick={sendData}>Send</button>
-        {restaurant?.map((item, id) => (
-          <div key={item.id} style={style.div}>
-            <h4>{item?.name}</h4>
-            <p>{item?.description}</p>
-            <img
-              src={`http://localhost:1337${item.avatar.url}`}
-              alt={item.avatar.name}
-              width={400}
-              style={{
-                width: "100%",
-                height: "auto",
-              }}
-            />
+        {error && <p>{error}</p>}
 
-            <div
-              style={{
-                padding: "12px",
+        {restaurant.length === 0 ? (
+          <p>Sorry it is not found!</p>
+        ) : (
+          restaurant?.map((item, id) => (
+            <div key={item.id} style={style.div}>
+              <h4 className="text-3xl">{item?.name}</h4>
+              <p>{item?.description}</p>
 
-                backgroundColor: "#f8f8f8",
-                marginBottom: "12px",
-              }}
-            >
-              {item.categories.map((item) => (
-                <p>{item.attributes.name}</p>
-              ))}
+              <img
+                src={`http://localhost:1337${item.avatar.url}`}
+                alt={item.avatar.name}
+                width={400}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+              />
+
+              <div
+                style={{
+                  padding: "12px",
+
+                  backgroundColor: "#f8f8f8",
+                  marginBottom: "12px",
+                }}
+              >
+                {item.categories.map((item) => (
+                  <p>{item.attributes.name}</p>
+                ))}
+              </div>
+
+              <button
+                className="bg-violet-500 hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300 rounded-md px-3 p-1"
+                onClick={() => {
+                  handleSinglePost(item.id);
+                }}
+              >
+                Read More
+              </button>
+              <p>createdAt : {item.publishedAt}</p>
             </div>
-
-            <button
-              onClick={() => {
-                handleSinglePost(item.id);
-              }}
-            >
-              Read More
-            </button>
-            <p>createdAt : {item.publishedAt}</p>
-          </div>
-        ))}
+          ))
+        )}
       </div>
+
+      <button className="bg-slate-600 py-2 mx-2 p-2 rounded-md">Pre</button>
+      <button className="bg-sky-600 py-2 mx-2 p-2 rounded-md">Next</button>
     </div>
   );
 };
@@ -148,10 +172,6 @@ const Blog = () => {
 export default Blog;
 
 const style = {
-  container: {
-    maxWidth: "1200px",
-    margin: "0 auto",
-  },
   div: {
     backgroundColor: "#dddd",
     padding: "20px",

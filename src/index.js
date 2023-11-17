@@ -5,6 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import 'react-bootstrap/dist/react-bootstrap'
+import "../src/input.css"
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -40,6 +40,7 @@ import Searchbar from "./Library/Searchbar";
 import Emailsend from "./AWS/Emailsend";
 import Blog from "./strapi/Blog";
 import BlogDetails from "./strapi/BlogDetails";
+import { Tailwind } from "./strapi/Tailwind";
 
 function App() {
   const [text, setText] = useState("");
@@ -109,6 +110,7 @@ function App() {
         <Route path="/emailsend" Component={Emailsend} />
         <Route path="/blog" Component={Blog} />
         <Route path="/blog/:postId" Component={BlogDetails} />
+        <Route path="/tailwind" Component={Tailwind} />
       </Routes>
     </div>
   );
