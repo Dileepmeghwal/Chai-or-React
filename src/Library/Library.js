@@ -20,6 +20,8 @@ const Library = () => {
   function handleSelection(e) {
     const selectedGenre = e.target.value;
 
+    console.log(selectedGenre);
+
     if (selectedGenre === "") {
       setFilterBook("");
       setBooklist(books);

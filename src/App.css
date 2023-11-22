@@ -90,3 +90,36 @@
   background-color: #000;
   color: #fff;
 }
+
+/* sidebar */
+/* Sidebar.css */
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.tab {
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: #555;
+}
+
+.submenu {
+  list-style-type: none;
+  padding-left: 20px;
+}
+
+.pending{
+  color: green;
+  font-family: 'Courier New', Courier, monospace
+}
+.active{
+
+  color: red;
+  font-weight: 600;
+}
