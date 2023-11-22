@@ -41,6 +41,7 @@ import Emailsend from "./AWS/Emailsend";
 import Blog from "./strapi/Blog";
 import BlogDetails from "./strapi/BlogDetails";
 import { Tailwind } from "./strapi/Tailwind";
+import Router from "./router/Router";
 
 function App() {
   const [text, setText] = useState("");
@@ -111,6 +112,7 @@ function App() {
         <Route path="/blog" Component={Blog} />
         <Route path="/blog/:postId" Component={BlogDetails} />
         <Route path="/tailwind" Component={Tailwind} />
+        <Route path="/router" Component={Router} />
       </Routes>
     </div>
   );

@@ -67,6 +67,7 @@ const Blog = () => {
             isAdmin: item.attributes.isAdmin,
             avatar: item.attributes.avatar.data.attributes,
             categories: item.attributes.categories.data,
+            des: item.attributes.des,
           };
         });
 
@@ -135,6 +136,8 @@ const Blog = () => {
                   height: "auto",
                 }}
               />
+
+              <p> {item.des}</p>
 
               <div
                 style={{

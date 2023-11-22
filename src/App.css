@@ -113,3 +113,13 @@
   list-style-type: none;
   padding-left: 20px;
 }
+
+.pending{
+  color: green;
+  font-family: 'Courier New', Courier, monospace
+}
+.active{
+
+  color: red;
+  font-weight: 600;
+}
