@@ -42,6 +42,9 @@ import Blog from "./strapi/Blog";
 import BlogDetails from "./strapi/BlogDetails";
 import { Tailwind } from "./strapi/Tailwind";
 import Router from "./router/Router";
+import ManipulationRef from "./router/ManipulationRef";
+import HomePage from "./EcommerceApp/HomePage";
+import SingleProduct from "./EcommerceApp/SingleProduct";
 
 function App() {
   const [text, setText] = useState("");
@@ -113,6 +116,9 @@ function App() {
         <Route path="/blog/:postId" Component={BlogDetails} />
         <Route path="/tailwind" Component={Tailwind} />
         <Route path="/router" Component={Router} />
+        <Route path="/dom" Component={ManipulationRef} />
+        <Route path="/homepage" Component={HomePage} />
+        <Route path="/product/:id" Component={SingleProduct} />
       </Routes>
     </div>
   );
