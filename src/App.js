@@ -14,11 +14,11 @@ import Todo from "./Todo";
 import TodoList from "./TodoList";
 import TodoApp from "./TodoApp/TodoApp";
 import Parent from "./useCallback/Parent";
-import Sidebar from "./sidebar";
+// import Sidebar from "./sidebar";
 import { DarkModeProvider, useDarkMode } from "./Context/DarkModeContext";
 import Card from "./Card/Card";
 import Counter from "./useCallback/Counter";
-
+import Sidebar from "./Sidebar/Sidebar";
 import CounterApp from "./useCallback/CounterApp";
 import ApiProduct from "./Card/ApiProduct";
 import DateTime from "./Date/DateTime";
@@ -119,6 +119,7 @@ function App() {
         <Route path="/dom" Component={ManipulationRef} />
         <Route path="/homepage" Component={HomePage} />
         <Route path="/product/:id" Component={SingleProduct} />
+        <Route path="/sidebar" Component={Sidebar} />
       </Routes>
     </div>
   );
